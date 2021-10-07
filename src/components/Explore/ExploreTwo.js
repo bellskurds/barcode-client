@@ -18,17 +18,17 @@ function App() {
     const baseURL = config.baseURL;
     const columns = [
         {
-            title: 'Barcode',
+            title: 'Código de barras',
             dataIndex: 'barcode',
             width: '40%',
          },
         {
-            title: 'Name',
+            title: 'Nombre',
             dataIndex: 'barcode_name',
             width: '40%',
         },
         {
-            title: 'Date',
+            title: 'Fecha',
             dataIndex: 'date_added',
             width: '20%',
         }]
@@ -49,11 +49,18 @@ function App() {
 
     const handleOk = e => {
         modalStatusSet(false)
+
+        let date_add = (new Date()).toLocaleString().split("/");
+        let real_date = [];
+        real_date[0] = date_add[1];
+        real_date[1] = date_add[0];
+        real_date[2] = date_add[2];
+        date_add = real_date.join("/");
         let newRecords = {
             key:scanData["barcode_key"],
             barcode:scanData["barcode"],
             barcode_name:scanData["barcode_name"],
-            date_added:(new Date()).toLocaleString(),
+            date_added:date_add,
             amount:foodAmount,
             food_type:"Comida"
         }
@@ -86,7 +93,7 @@ function App() {
         }
         for(let i in barcodeData){
             let records = barcodeData[i];
-            if(data == records["barcode"] && records["barcode_status"] == "Active"){
+            if(data == records["barcode"] && records["barcode_status"] == "Activo"){
                 setScanData(records)
                 showModal();
                 setData("");
@@ -116,15 +123,15 @@ function App() {
             }}
           />
           <div className="center_centent">
-            <input placeholder="Enther a Number" className="cl-black" style={{width:'70%'}} onChange={(e)=>{searchDatas(e.target.value)}} />
-            <button className="btn btn-primay" onClick={barcodeScan}>Scan</button>
+            <input placeholder="Ingrese un número" className="cl-black" style={{width:'70%'}} onChange={(e)=>{searchDatas(e.target.value)}} />
+            <button className="btn btn-primay" onClick={barcodeScan}>Escanear</button>
           </div>
             <Table
                 columns={columns}
                 dataSource = {initData}
              />
               <Modal
-                title={<><span>{scanData["barcode_name"]}</span><br /><span>No.  { scanData["id"]}</span></>}
+                title={<><span>{scanData["barcode_name"]}</span><br /><span>{ scanData["barcode"]}</span></>}
                 closable={false}
                 visible={modalStatus}
                 onOk={handleOk}

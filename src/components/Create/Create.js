@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from 'react';
-import { Table, Button, DatePicker } from 'antd';
+import { Table, Button, DatePicker,Pagination } from 'antd';
 import axios from 'axios';
 import { baseURL } from '../../config';
 import { File } from 'better-xlsx';
@@ -8,7 +8,7 @@ const Create = () => {
     const columns = [
 
         {
-            title: 'Type',
+            title: 'Tipo',
             dataIndex: 'food_type',
             width: '10%',
             editable: true,
@@ -16,26 +16,26 @@ const Create = () => {
 
         },
         {
-            title: 'Amount',
+            title: 'Cantidad',
             dataIndex: 'amount',
             width: '15%',
             editable: true,
         },
         {
-            title: 'Barcode',
+            title: 'Código de barras',
             dataIndex: 'barcode',
             width: '30%',
             editable: false,
         },
         {
-            title: 'Name',
+            title: 'Nombre',
             dataIndex: 'barcode_name',
             width: '20%',
             // responsive: ['lg'],
 
         },
         {
-            title: 'Date',
+            title: 'Fecha',
             dataIndex: 'date_added',
             width: '25%',
         },
@@ -301,16 +301,19 @@ const Create = () => {
     const onShowSizeChange = (current, pageSize) => {
         console.log(current, pageSize);
     }
+    const showTotal = (total, range) => {
+        return `${range[0]}-${range[1]} de ${total} elementos`
+    }
     return (
         <div className="main-content">
             <div className="example">
-                <input className="m-1 cl-black" style={{ width: "30%", color: "white", height: "34px" }} placeholder="input search text" onChange={(e) => { setFilterVaue(e.target.value) }} enterButton="Search" size="small" />
-                <DatePicker.RangePicker className="m-1 date_ranger" style={{width:"20%"}} onCalendarChange={(e) => { setFilterVaue(e); dateStore(e) }} />
+                <input className="m-1 cl-black" style={{ width: "30%", color: "white", height: "34px" }} placeholder="Buscar..." onChange={(e) => { setFilterVaue(e.target.value) }} enterButton="Buscar" size="small" />
+                <DatePicker.RangePicker className="m-1 date_ranger" placeholder={["Fecha inicial","Fecha final"]} style={{width:"20%"}} onCalendarChange={(e) => { setFilterVaue(e); dateStore(e) }} />
                 {
 
-                    isRowSelected ? <Button  style={{  width: '10%' }} className="delete_button m-1" onClick={selectedDelete}>Delete</Button> : ""
+                    isRowSelected ? <Button  style={{  width: '10%' }} className="delete_button m-1" onClick={selectedDelete}>Borrar</Button> : ""
                 }
-                <Button className="m-1 export_button" onClick={exportToExcel} style={{width:"10%"}}>Export</Button>
+                <Button className="m-1 export_button" onClick={exportToExcel} style={{width:"10%"}}>Exportar</Button>
             </div>
             <Table
                 rowSelection={{
@@ -319,7 +322,9 @@ const Create = () => {
                 rowClassName="data_table"
                 columns={columns}
                 dataSource={!filterValue ? initData : filterData}
+                pagination={{ alignment:  'center', showTotal: showTotal }}
             />
+             
         </div>
     );
 }

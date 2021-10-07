@@ -17,19 +17,19 @@ const Header = () => {
                     {/* Navbar */}
                     <ul className="navbar-nav items mx-auto">
                         <li className="nav-item dropdown">
-                            <Link className="nav-link" to="/data">Data</Link>
+                            <Link className="nav-link" to="/data">Fecha</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/barcode_list" className="nav-link">Barcode List</Link>
+                            <Link to="/barcode_list" className="nav-link">Empleados</Link>
                         </li>
                         <li className="nav-item dropdown">
-                            <Link className="nav-link" to="/">Barcode Scan</Link>
+                            <Link className="nav-link" to="/">Escanear</Link>
                         </li>
                         <li className="nav-item dropdown">
-                            <Link className="nav-link not_reload" to="#">Admin <i className="fas fa-angle-down ml-1" /></Link>
+                            <Link className="nav-link not_reload" to="#">Administradora <i className="fas fa-angle-down ml-1" /></Link>
                             <ul className="dropdown-menu">
-                                <li className="nav-item"><Link className="nav-link not_reload" to="#" onClick={(e)=>{handleLogout()}}>Logout</Link></li>
-                                <li className="nav-item"><Link className="nav-link not_reload" to="#" onClick={() => setModalStatus(true)}>Profile</Link></li>
+                                <li className="nav-item"><Link className="nav-link not_reload" to="#" onClick={(e)=>{handleLogout()}}>Cerrar sesión</Link></li>
+                                <li className="nav-item"><Link className="nav-link not_reload" to="#" onClick={() => setModalStatus(true)}>Perfil</Link></li>
                             </ul>
                         </li>
                     </ul>

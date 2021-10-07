@@ -48,7 +48,7 @@ const EditableTable = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
   const [editingKey, setEditingKey] = useState('');
-  const [statusValue,statusValueSet] = useState("Active");
+  const [statusValue,statusValueSet] = useState("Activo");
   const [checkRows,checkRowGet] = useState([]);
   const [filterValue,filterValues] = useState("")
   const [filterData, setFilterData] = useState([]);
@@ -109,32 +109,32 @@ const EditableTable = () => {
 
   const columns = [
     {
-      title: 'barcode',
+      title: 'código de barras',
       dataIndex: 'barcode',
       width: '20%',
       editable: true,
     },
     {
-      title: 'Name',
+      title: 'Nombre',
       dataIndex: 'barcode_name',
       width: '15%',
       editable: true,
     },
     {
-      title: 'Date Added',
+      title: 'Fecha Agregada',
       dataIndex: 'date_added',
       width: '35%',
      },
     {
-        title:"Status",
+        title:"Estado",
         dataIndex:"barcode_status",
         width:"20%",
         render: (_, record) => {
          const editable = isEditing(record);
         return editable ? (
         <Select showSearch style={{ width: 200 }} onChange={(e)=>{statusValueSet(e)}} defaultValue={record.barcode_status}>
-            <Option value="Active">Active</Option>
-            <Option value="Archived">Archived</Option>
+            <Option value="Activo">Activo</Option>
+            <Option value="Archivado">Archivado</Option>
           </Select>
         ) : (
             <span>{record.barcode_status}</span>
@@ -142,7 +142,7 @@ const EditableTable = () => {
       },
     },
     {
-      title: 'operation',
+      title: 'operación',
       dataIndex: 'operation',
       render: (_, record) => {
         const editable = isEditing(record);
@@ -155,15 +155,15 @@ const EditableTable = () => {
                 marginRight: 8,
               }}
             >
-              Save
+              Ahorrar
             </a>
             <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-              <a>Cancel</a>
+              <a>Cancelar</a>
             </Popconfirm>
           </span>
         ) : (
           <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-            Edit
+            Editar
           </Typography.Link>
         );
       },
@@ -186,12 +186,18 @@ const EditableTable = () => {
     };
   });
   const recordAdd = ()=>{
+    let date_add = (new Date()).toLocaleString().split("/");
+    let real_date = [];
+    real_date[0] = date_add[1];
+    real_date[1] = date_add[0];
+    real_date[2] = date_add[2];
+    date_add = real_date.join("/");
     let newData = {
         key:(new Date()).valueOf(),
         barcode:"",
         barcode_name:"",
-        date_added:(new Date()).toLocaleString(),
-        barcode_status:"Active",
+        date_added:date_add,
+        barcode_status:"Activo",
     }
     edit(newData)
     setData(pre=>([newData,...data]))
@@ -228,12 +234,12 @@ const EditableTable = () => {
             if (selectedRows.length) {
                 let k = 0;
                 for(let i in selectedRows){
-                  if(selectedRows[i]["barcode_status"] =="Archived"){
+                  if(selectedRows[i]["barcode_status"] =="Archivado"){
                     RowSelectedSet(true)
                   }
                 }
                 for(let i in selectedRows){
-                  if(selectedRows[i]["barcode_status"] =="Active"){
+                  if(selectedRows[i]["barcode_status"] =="Activo"){
                     RowSelectedSet(false)
                   }
                 }
@@ -281,14 +287,17 @@ const EditableTable = () => {
     useEffect(()=>{
         getDatas();
     },[])
+    const showTotal = (total, range) => {
+        return `${range[0]}-${range[1]} de ${total} elementos`
+    }
   return (
     <Form form={form} component={false}>
     <div className = "main-content">
-        <input placeholder="input for search cl-black" className="serach_text" style={{width:"50%"}} onChange={(e)=>{filterValues(e.target.value)}} />
-        <button className="btn btn-primary add_button"  onClick={recordAdd}>Add button</button>
+        <input placeholder="entrada para búsqueda" className="serach_text" style={{width:"50%"}} onChange={(e)=>{filterValues(e.target.value)}} />
+        <button className="btn btn-primary add_button"  onClick={recordAdd}>Botón Agregar</button>
 
         {
-          isRowSelected ? <button  style={{  width: '10%' }} className="btn btn-info archived_button" onClick={selectedDelete}>Delete</button> : ""
+          isRowSelected ? <button  style={{  width: '10%' }} className="btn btn-info archived_button" onClick={selectedDelete}>Borrar</button> : ""
         }
           <Table
             components={{
@@ -302,6 +311,7 @@ const EditableTable = () => {
             rowClassName="editable-row"
             pagination={{
               onChange: cancel,
+              showTotal:showTotal
             }}
             rowSelection={{
                     ...rowSelection,
