@@ -1,0 +1,221 @@
+
+#barcode,#barcode_name{
+	color: black !important
+}
+.ant-modal-body input{
+	color: black !important;
+}
+.ant-table-container{
+	overflow-x: auto !important;
+}
+.main-content{
+	position: relative;
+	top: 11vh;
+	background-color: white
+	color:black;
+}
+.item-form *input{
+}
+.cl-white{
+
+	color:white !important;
+}
+.cl-black{
+
+	color:black !important;
+	border-style: all;
+	border-radius: 4px
+}
+.serach_text{
+	color: black !important;
+}
+header .navbar-expand{
+	background:black;
+}
+video{
+	width: 100%;
+	height: 500px
+}.center_centent{
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+/*@media only screen and  (max-width: 320px) {
+  .delete_button ,.export_button{
+  	width: 17% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }.add_button,.active_button,.archived_button{
+  	width: 30% !important
+  }.serach_text{
+  	width: 100% !important
+  }*/
+
+@media (max-width: 541px) {
+  .delete_button ,.export_button{
+  	width: 20% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }.add_button,.active_button,.archived_button{
+  	width: 33% !important
+  }.serach_text{
+  	width: 100% !important
+  }
+  .ant-picker-panel-container .ant-picker-panels{
+  	display:grid !important;
+  }
+}
+ @media (max-width: 415px) {
+  .delete_button ,.export_button{
+  	width: 20% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }.add_button,.active_button,.archived_button{
+  	width: 33% !important
+  }.serach_text{
+  	width: 100% !important
+  }  .ant-picker-panel-container .ant-picker-panels{
+  	display:grid !important;
+  }
+}
+ @media (max-width: 376px) {
+  .delete_button ,.export_button{
+  	width: 20% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }.add_button,.active_button,.archived_button{
+  	width: 33% !important
+  }.serach_text{
+  	width: 100% !important
+  }  .ant-picker-panel-container .ant-picker-panels{
+  	display:grid !important;
+  }
+}
+@media only screen and  (width: 360px) {
+  .delete_button ,.export_button{
+  	width: 20% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }.add_button,.active_button,.archived_button{
+  	width: 33% !important
+  }.serach_text{
+  	width: 100% !important
+  }  .ant-picker-panel-container .ant-picker-panels{
+  	display:grid !important;
+  }
+}
+@media only screen and  (width: 320px) {
+  .delete_button ,.export_button{
+  	width: 20% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }.add_button,.active_button,.archived_button{
+  	width: 33% !important
+  }.serach_text{
+  	width: 100% !important
+  }  .ant-picker-panel-container .ant-picker-panels{
+  	display:grid !important;
+  }
+}
+/*@media only screen and  (max-width: 400px) {
+  .delete_button ,.export_button{
+  	width: 17% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }
+}
+
+@media only screen and  (max-width: 414px) {
+  .delete_button ,.export_button{
+  	width: 20% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }
+}
+@media only screen and  (width: 540px) {
+  .delete_button ,.export_button{
+  	width: 17% !important
+  }
+  .date_ranger{
+  	width: 40% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }
+}
+@media only screen and  (max-width: 1024px) {
+  .delete_button ,.export_button{
+  	width: 20% !important
+  }
+  .date_ranger{
+  	width: 20% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }
+}
+@media only screen and  (max-width: 280px) {
+  .delete_button ,.export_button{
+  	width: 40% !important
+  }
+  .date_ranger{
+  	width: 50% !important
+  }.data_table{
+  	overflow-x: scroll !important;
+  }.ant-pagination{
+  	justify-content: center !important;
+  }
+}
+
+
+
+@media only screen and (width: 320px){
+.add_button, .active_button, .archived_button {
+    width: 29% !important;
+    font-size: 14px;
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;}
+}*/
