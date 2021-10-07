@@ -142,7 +142,7 @@ const EditableTable = () => {
       },
     },
     {
-      title: 'operación',
+      title: 'Acción',
       dataIndex: 'operation',
       render: (_, record) => {
         const editable = isEditing(record);
@@ -155,7 +155,7 @@ const EditableTable = () => {
                 marginRight: 8,
               }}
             >
-              Ahorrar
+              Guardar
             </a>
             <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
               <a>Cancelar</a>
@@ -294,7 +294,7 @@ const EditableTable = () => {
     <Form form={form} component={false}>
     <div className = "main-content">
         <input placeholder="entrada para búsqueda" className="serach_text" style={{width:"50%"}} onChange={(e)=>{filterValues(e.target.value)}} />
-        <button className="btn btn-primary add_button"  onClick={recordAdd}>Botón Agregar</button>
+        <button className="btn btn-primary add_button"  onClick={recordAdd}>Agregar</button>
 
         {
           isRowSelected ? <button  style={{  width: '10%' }} className="btn btn-info archived_button" onClick={selectedDelete}>Borrar</button> : ""

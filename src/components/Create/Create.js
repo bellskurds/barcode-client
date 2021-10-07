@@ -65,6 +65,7 @@ const Create = () => {
     };
     const getData = () => {
         axios.post(baseURL + 'api/get_scaneddata').then((res) => {
+            res.data.sort(function(a,b){return new Date(b["date_added"]) - new Date(a["date_added"])});
             res.data.map((data, index) => {
                 res.data[index]["key"] = data['id'];
             })
